@@ -1,11 +1,13 @@
 # 使用要点
 * 工程的位置 https://github.com/MutiYouth/eladmin
-* 在线文档 https://eladmin.vip/pages/010103/#%E6%89%80%E9%9C%80%E7%8E%AF%E5%A2%83
+* [在线文档](https://eladmin.vip/pages/010103/#%E6%89%80%E9%9C%80%E7%8E%AF%E5%A2%83)
 
 # 服务端
 
-1) 修改 `eladmin-system\src\main\resources\config\application-dev.yml` 中的 mysql的ip, 账户与密码。 
-2) 要开启redis
+1) 修改 `eladmin-system\src\main\resources\config\application-dev.yml` 中的 mysql的ip, 账户与密码。
+2) `sql\eladmin.sql`中的数据库，导入
+3) 要开启 redis
+4) 执行 `eladmin-system\src\main\java\me\zhengjie\AppRun.java` 
 
 
 # 前端运行[WebStorm]

@@ -110,11 +110,11 @@ file:
     path: ~/file/
     avatar: ~/avatar/
   linux:
-    path: /home/eladmin/file/
-    avatar: /home/eladmin/avatar/
+    path: /home/pi/dev/proj/eladmin/file_to_save/file/
+    avatar: /home/pi/dev/proj/eladmin/file_to_save/avatar/
   windows:
-    path: C:\eladmin\file\
-    avatar: C:\eladmin\avatar\
+    path: E:\Learns\Java\Projs\221112_admin_vue\_tmp_file_to_save\file\
+    avatar: E:\Learns\Java\Projs\221112_admin_vue\_tmp_file_to_save\avatar\
   # 文件大小 /M
   maxSize: 100
   avatarMaxSize: 5

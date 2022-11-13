@@ -18,6 +18,7 @@
         <jna.version>5.8.0</jna.version>
     </properties>
 
+
     <dependencies>
         <!-- 代码生成模块 -->
         <dependency>
@@ -40,10 +41,10 @@
         </dependency>
 
         <!-- Spring boot websocket -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-websocket</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
 
         <!-- jwt -->
         <dependency>
@@ -69,16 +70,16 @@
         </dependency>
 
         <!-- linux的管理 -->
-		<dependency>
-			<groupId>ch.ethz.ganymed</groupId>
-			<artifactId>ganymed-ssh2</artifactId>
-			<version>build210</version>
-		</dependency>
-		<dependency>
-			<groupId>com.jcraft</groupId>
-			<artifactId>jsch</artifactId>
-			<version>0.1.55</version>
-		</dependency>
+        <dependency>
+            <groupId>ch.ethz.ganymed</groupId>
+            <artifactId>ganymed-ssh2</artifactId>
+            <version>build210</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jcraft</groupId>
+            <artifactId>jsch</artifactId>
+            <version>0.1.55</version>
+        </dependency>
 
         <!-- 获取系统信息 -->
         <dependency>
@@ -95,6 +96,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
             <!-- 跳过单元测试 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -103,6 +105,56 @@
                     <skipTests>true</skipTests>
                 </configuration>
             </plugin>
+
+            <!--
+            打包之后的jar文件放置
+            REF
+            https://www.cnblogs.com/shuhao66666/articles/15196172.html
+             -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <id>install</id>
+                        <phase>install</phase>
+                        <configuration>
+                            <target>
+                                <echo message="*******************install*******************"/>
+                                <!-- <mkdir dir="${basedir}/target/classes" /> -->
+                                <copy todir="${project.build.directory}/../../_install" overwrite="true">
+                                    <fileset dir="${project.build.directory}" erroronmissingdir="false">
+                                        <include name="*.jar"/>
+                                    </fileset>
+                                </copy>
+                                <!-- <move file="${project.build.directory}/xxxxxxx.jar" -->
+                                <!--       tofile="${project.build.directory}/xxx.jar" /> -->
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>clean</id>
+                        <phase>clean</phase>
+                        <configuration>
+                            <target>
+                                <echo message="*******************clean*******************"/>
+                                <delete dir="target"/>
+                                <delete file="../_install/eladmin-system-2.6.jar"/>
+                                <!-- <mkdir dir="${basedir}/target/classes" /> -->
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+
         </plugins>
     </build>
 </project>
